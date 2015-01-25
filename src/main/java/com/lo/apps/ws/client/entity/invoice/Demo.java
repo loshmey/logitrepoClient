@@ -1,4 +1,4 @@
-package com.lo.apps.ws.entity.invoice;
+package com.lo.apps.ws.client.entity.invoice;
 
 
 public class Demo {

@@ -5,7 +5,7 @@
 // Generated on: 2015.01.22 at 11:39:00 PM CET 
 //
 
-package com.lo.apps.ws.entity.invoice;
+package com.lo.apps.ws.client.entity.invoice;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -6,7 +6,7 @@
 //
 
 
-package com.lo.apps.ws.entity.invoice;
+package com.lo.apps.ws.client.entity.invoice;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
