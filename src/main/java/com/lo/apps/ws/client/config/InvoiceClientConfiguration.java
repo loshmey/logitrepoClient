@@ -1,4 +1,4 @@
-package com.lo.apps.config;
+package com.lo.apps.ws.client.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

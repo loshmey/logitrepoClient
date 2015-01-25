@@ -1,8 +1,8 @@
-package com.lo.apps.service.impl;
+package com.lo.apps.ws.client.service.impl;
 
 import javax.jws.WebService;
 
-import com.lo.apps.service.InvoiceService;
+import com.lo.apps.ws.client.service.InvoiceService;
 import com.lo.apps.ws.entity.invoice.SendInvoiceRequest;
 import com.lo.apps.ws.entity.invoice.SendInvoiceResponse;
 

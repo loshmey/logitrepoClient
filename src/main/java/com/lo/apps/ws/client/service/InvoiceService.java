@@ -1,4 +1,4 @@
-package com.lo.apps.service;
+package com.lo.apps.ws.client.service;
 
 import com.lo.apps.ws.entity.invoice.SendInvoiceRequest;
 import com.lo.apps.ws.entity.invoice.SendInvoiceResponse;

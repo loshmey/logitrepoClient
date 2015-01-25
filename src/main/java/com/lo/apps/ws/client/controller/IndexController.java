@@ -1,4 +1,4 @@
-package com.lo.apps.ws.controller;
+package com.lo.apps.ws.client.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
