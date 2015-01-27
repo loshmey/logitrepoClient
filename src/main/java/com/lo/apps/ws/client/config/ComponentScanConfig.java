@@ -1,10 +1,17 @@
 package com.lo.apps.ws.client.config;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@ComponentScan(basePackages = "com.lo.apps")
+//@Configuration
+//@ComponentScan(basePackages = "com.lo.apps.ws.client")
 public class ComponentScanConfig {
+
+	// @Bean
+	// public ServletRegistrationBean dispatcherServlet(ApplicationContext
+	// applicationContext) {
+	// DispatcherServlet servlet = new DispatcherServlet();
+	// servlet.setApplicationContext(applicationContext);
+	//
+	// return new ServletRegistrationBean(servlet, "/*");
+	// }
 
 }

@@ -32,11 +32,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-			<version>1.2.1.RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 		</dependency>
@@ -48,6 +43,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 			<version>${spring.boot.version}</version>
 		</dependency>
 		<dependency>
@@ -165,19 +165,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring.boot.version}</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<update>true</update>
-					<path>/${project.build.finalName}</path>
-					<url>http://localhost:8080/manager/text</url>
-					<server>localhost</server>
-					<username>admin</username>
-					<password>x</password>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

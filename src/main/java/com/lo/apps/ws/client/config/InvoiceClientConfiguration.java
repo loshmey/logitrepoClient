@@ -3,9 +3,12 @@ package com.lo.apps.ws.client.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.config.annotation.EnableWs;
+import org.springframework.xml.xsd.SimpleXsdSchema;
+import org.springframework.xml.xsd.XsdSchema;
 
 import com.lo.apps.ws.client.service.impl.InvoiceClientServiceImpl;
 
@@ -47,6 +50,16 @@ public class InvoiceClientConfiguration {
 		client.setWebServiceTemplate(webServiceTemplate());
 
 		return client;
+	}
+
+	@Bean
+	public XsdSchema invoiceSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("invoice.xsd"));
+	}
+
+	@Bean
+	public MarshallingHttpMessageConverter marshallingConverter() {
+		return new MarshallingHttpMessageConverter(marshaller(), unmarshaller());
 	}
 
 }

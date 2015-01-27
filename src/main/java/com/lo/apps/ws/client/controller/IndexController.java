@@ -33,6 +33,7 @@ public class IndexController {
 			model.addAttribute("status", response.getStatus());
 			model.addAttribute("description", response.getDescription());
 			model.addAttribute("timestamp", response.getTimestamp());
+
 		}
 
 		return "index";
