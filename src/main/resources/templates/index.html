@@ -23,7 +23,7 @@
                     </div>
                 </div>                
             </div>    
-            <form>
+            <form action="/index" method="post">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default">
@@ -33,15 +33,15 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label>Naziv dobavljaca</label>
-                                    <input type="text" class="form-control" placeholder="Unesite naziv..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite naziv..." name="supplierName"/>
                                 </div>                
                                 <div class="form-group">
                                     <label>Adresa dobavljaca</label>
-                                    <input type="text" class="form-control" placeholder="Unesite adresu..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite adresu..." name="supplierAddress"/>
                                 </div>                
                                 <div class="form-group">
                                     <label>PIB dobavljaca</label>
-                                    <input type="text" class="form-control" placeholder="Unesite PIB..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite PIB..." name="supplierPIB"/>
                                 </div>   
                             </div>
                         </div>
@@ -52,15 +52,15 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label>Naziv kupca</label>
-                                    <input type="text" class="form-control" placeholder="Unesite naziv..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite naziv..." name="buyerName"/>
                                 </div>                
                                 <div class="form-group">
                                     <label>Adresa kupca</label>
-                                    <input type="text" class="form-control" placeholder="Unesite naziv..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite naziv..." name="buyerAddress"/>
                                 </div>           
                                 <div class="form-group">
                                     <label>PIB kupca</label>
-                                    <input type="text" class="form-control" placeholder="Unesite naziv..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite naziv..." name="buyerPIB"/>
                                 </div>                  
                             </div>
                         </div>
@@ -73,31 +73,35 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label>Broj racuna</label>
-                                    <input type="text" class="form-control" placeholder="Unesite racun..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite racun..." name="accountNumber"/>
                                 </div> 
                                 <div class="form-group">
                                     <label>Datum racuna</label>
-                                    <input type="date" class="form-control" placeholder="Unesite datum..."/>
+                                    <input type="date" class="form-control" placeholder="Unesite datum..." name="accountDate"/>
                                 </div> 
                                 <div class="form-group">
                                     <label>Vrednost robe</label>
-                                    <input type="number" class="form-control" placeholder="Unesite vrednost..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite vrednost..." name="merchValue"/>
                                 </div> 
                                 <div class="form-group">
                                     <label>Vrednost usluga</label>
-                                    <input type="number" class="form-control" placeholder="Unesite vrednost..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite vrednost..." name="serviceValue"/>
                                 </div> 
                                 <div class="form-group">
                                     <label>Ukupno roba i usluge</label>
-                                    <input type="number" class="form-control" placeholder="Unesite ukupno roba i usluge..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite ukupno roba i usluge..." name="merchAndServiceSum"/>
                                 </div> 
                                 <div class="form-group">
                                     <label>Ukupan rabat</label>
-                                    <input type="number" class="form-control" placeholder="Unesite ukupan rabat..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite ukupan rabat..." name="rebateSum"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ukupan porez</label>
+                                    <input type="text" class="form-control" placeholder="Unesite ukupan porez..." name="taxSum"/>
                                 </div> 
                                 <div class="form-group">
                                     <label>Oznaka valute</label>
-                                    <select class="form-control">
+                                    <select class="form-control" name="currencyCode">
                                         <option value="">-- Izaberite oznaku --</option>
                                         <option value="1">RSD</option>
                                         <option value="1">EUR</option>
@@ -106,15 +110,15 @@
                                 </div> 
                                 <div class="form-group">
                                     <label>Iznos za uplatu</label>
-                                    <input type="number" class="form-control" placeholder="Unesite iznos za uplatu..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite iznos za uplatu..." name="amountToPay"/>
                                 </div> 
                                 <div class="form-group">
                                     <label>Uplata na racun</label>
-                                    <input type="text" class="form-control" placeholder="Unesite racun..."/>
+                                    <input type="text" class="form-control" placeholder="Unesite racun..." name="payToAccount"/>
                                 </div> 
                                 <div class="form-group">
                                     <label>Datum valute</label>
-                                    <input type="date" class="form-control"/>
+                                    <input type="date" class="form-control" name="dateOfCurrency"/>
                                 </div> 
                             </div>
                         </div>
@@ -135,7 +139,7 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-footer text-right">
-                                <button type="submit" class="btn btn-default">Posalji</button>
+                                <button type="submit" class="btn btn-default" name="submit">Posalji</button>
                             </div>
                         </div>
                     </div>                    
