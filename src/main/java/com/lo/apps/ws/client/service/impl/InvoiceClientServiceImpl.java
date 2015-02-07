@@ -1,10 +1,10 @@
 package com.lo.apps.ws.client.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
-import org.springframework.format.datetime.DateFormatter;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import com.lo.apps.ws.client.entity.invoice.Account;
@@ -48,9 +48,9 @@ public class InvoiceClientServiceImpl extends WebServiceGatewaySupport implement
 		Transaction transaction = new Transaction();
 		Account account = new Account();
 		Sums sums = new Sums();
-		DateFormatter df = new DateFormatter("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-		account.setAccountDate(df.parse(invoiceDTO.getAccountDate(), Locale.ENGLISH));
+		account.setAccountDate(invoiceDTO.getAccountDate());
 		account.setAccountNumber(invoiceDTO.getAccountNumber());
 
 		buyer.setAccount(account);
@@ -67,8 +67,9 @@ public class InvoiceClientServiceImpl extends WebServiceGatewaySupport implement
 		sums.setTaxSum(invoiceDTO.getTaxSum());
 
 		transaction.setAmountToPay(invoiceDTO.getAmountToPay());
-		transaction.setCurrencyCode(invoiceDTO.getCurrencyCode());
-		transaction.setDateOfCurrency(df.parse(invoiceDTO.getDateOfCurrency(), Locale.ENGLISH));
+		transaction.setCurrencyCode(getCurrencyCode(invoiceDTO.getCurrencyCode()));
+
+		transaction.setDateOfCurrency(sdf.format(new Date()));
 		transaction.setMerchValue(invoiceDTO.getMerchValue());
 		transaction.setPayToAccount(invoiceDTO.getPayToAccount());
 		transaction.setServiceValue(invoiceDTO.getServiceValue());
@@ -98,8 +99,26 @@ public class InvoiceClientServiceImpl extends WebServiceGatewaySupport implement
 			}
 		}
 
+		invoice.setRequestDateTime(sdf.format(new Date()));
 		invoice.setInvoiceHeaderData(invoiceHeader);
 
 		return invoice;
+	}
+
+	private String getCurrencyCode(String currencyCodeValue) {
+		String currencyCode = "";
+		switch (currencyCodeValue) {
+		case "1":
+			currencyCode = "RSD";
+			break;
+		case "2":
+			currencyCode = "EUR";
+			break;
+		case "3":
+			currencyCode = "USD";
+			break;
+		}
+
+		return currencyCode;
 	}
 }
