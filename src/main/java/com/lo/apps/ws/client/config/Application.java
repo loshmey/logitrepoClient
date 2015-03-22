@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({ WebConfig.class, InvoiceClientConfiguration.class })
+@Import({ WebConfig.class, ClientWSConfiguration.class })
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class })
 public class Application {
 
