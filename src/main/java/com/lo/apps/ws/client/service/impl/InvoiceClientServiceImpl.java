@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
-import org.springframework.ws.soap.client.core.SoapActionCallback;
 
 import com.lo.apps.ws.client.entity.invoice.Account;
 import com.lo.apps.ws.client.entity.invoice.Buyer;
@@ -34,9 +33,10 @@ public class InvoiceClientServiceImpl extends WebServiceGatewaySupport implement
 
 		if (invoice != null) {
 			request.setInvoice(invoice);
+			response = (SendInvoiceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 			// response = (SendInvoiceResponse)
-			// getWebServiceTemplate().marshalSendAndReceive(request);
-			response = (SendInvoiceResponse) getWebServiceTemplate().marshalSendAndReceive(request, new SoapActionCallback("http://localhost:8080/invoice/schema/SendInvoiceRequest"));
+			// getWebServiceTemplate().marshalSendAndReceive(request, new
+			// SoapActionCallback("http://localhost:8080/invoice/schema/SendInvoiceRequest"));
 		}
 
 		return response;

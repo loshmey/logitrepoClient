@@ -13,8 +13,6 @@ hs_err_pid*
 
 /target/
 /src/main/resources/nbproject
-.settings
-.project
 .classpath
 .springBeans
 .springWebflow
