@@ -48,4 +48,9 @@ public class IndexController {
 		return "index";
 	}
 
+    @RequestMapping(value = "/accountStatus", method = RequestMethod.GET)
+	public String accountStatus() throws Exception {
+        return "accountStatus";
+    }
+
 }

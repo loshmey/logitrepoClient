@@ -30,7 +30,10 @@ function buildStavkaHtml(){
     stavka += "<div class='form-group'><label>Ukupan porez</label><input type='text' class='form-control' placeholder='Unesite ukupan porez...' name='invoiceRecordList[" + (counter - 1) + "].taxTotal'/></div>";
     stavka += "<div class='form-group'><input type='hidden' name='invoiceRecordList[" + (counter - 1) + "].recordNumber' value='" + counter + "'/></div>";
     
-    var html = "<div class='row'><div class='col-md-12'><div class='panel panel-default'><div class='panel-body'>"+stavka+"</div></div></div></div>";
-    
-    return html;
+    return "<div class='row'><div class='col-md-12'><div class='panel panel-default'><div class='panel-body'>"+stavka+"</div></div></div></div>";
+}
+
+function toggleStatusRacuna(id){
+    document.getElementById(id).disabled = true;
+    console.info(document.getElementById('accountStatus'));
 }
