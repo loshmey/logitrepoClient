@@ -109,27 +109,8 @@ public class ClientWSConfiguration extends WsConfigurerAdapter {
 		logger.debug("In wsClientSecurityInterceptor()...");
 		Wss4jSecurityInterceptor securityInterceptor = new Wss4jSecurityInterceptor();
 
-		//configureValidation(securityInterceptor);
-		//configureSecurement(securityInterceptor);
-
-        // securement
-//        securityInterceptor.setSecurementActions("Timestamp Signature Encrypt");
-		securityInterceptor.setSecurementActions("Timestamp");
-        securityInterceptor.setTimestampPrecisionInMilliseconds(true);
-        securityInterceptor.setSecurementTimeToLive(999999999);
-        securityInterceptor.setSecurementUsername("firma1");
-        securityInterceptor.setSecurementPassword("x");
-        securityInterceptor.setSecurementSignatureCrypto(keyStore().getObject());
-        securityInterceptor.setSecurementEncryptionCrypto(keyStore().getObject());
-        securityInterceptor.setSecurementEncryptionParts("{Content}{http://localhost:8080/invoice/schema}SendInvoiceRequest");
-        securityInterceptor.setSecurementEncryptionUser("banka1");
-
-        // validation
-//        securityInterceptor.setValidationActions("Signature");
-        securityInterceptor.setValidationActions("Timestamp");
-        securityInterceptor.setTimestampStrict(true);
-        securityInterceptor.setValidationTimeToLive(999999999);
-        securityInterceptor.setValidationSignatureCrypto(keyStore().getObject());
+		configureValidation(securityInterceptor);
+		configureSecurement(securityInterceptor);
 
 		return securityInterceptor;
 	}
@@ -139,7 +120,7 @@ public class ClientWSConfiguration extends WsConfigurerAdapter {
 	 * 
 	 * @param //securityInterceptor
 	 */
-	/*private void configureValidation(Wss4jSecurityInterceptor securityInterceptor) {
+	private void configureValidation(Wss4jSecurityInterceptor securityInterceptor) {
 		try {
             securityInterceptor.setValidateRequest(true);
             securityInterceptor.setValidateResponse(true);
@@ -159,7 +140,7 @@ public class ClientWSConfiguration extends WsConfigurerAdapter {
 			logger.debug("!!! Error message: {}", e.getMessage());
 			e.printStackTrace();
 		}
-	}*/
+	}
 
 	@Bean
 	public KeyStoreCallbackHandler validationCallbackHandler() {
@@ -174,12 +155,12 @@ public class ClientWSConfiguration extends WsConfigurerAdapter {
 	 * 
 	 * @param //securityInterceptor
 	 */
-	/*private void configureSecurement(Wss4jSecurityInterceptor securityInterceptor) {
+	private void configureSecurement(Wss4jSecurityInterceptor securityInterceptor) {
 		try {
             securityInterceptor.setSecureResponse(true);
 			securityInterceptor.setSecurementActions("Timestamp Signature Encrypt");
 
-			securityInterceptor.setSecurementEncryptionKeyIdentifier("IssuerSerial");
+			securityInterceptor.setSecurementEncryptionKeyIdentifier("DirectReference");
 			securityInterceptor.setSecurementEncryptionKeyTransportAlgorithm("http://www.w3.org/2001/04/xmlenc#rsa-1_5");
 			securityInterceptor.setSecurementEncryptionSymAlgorithm("http://www.w3.org/2001/04/xmlenc#aes128-cbc");
 
@@ -200,7 +181,7 @@ public class ClientWSConfiguration extends WsConfigurerAdapter {
 			logger.debug("!!! Error message: {}", e.getMessage());
 			e.printStackTrace();
 		}
-	}*/
+	}
 
     /**
      * Crypto Factory Bean configuration.
