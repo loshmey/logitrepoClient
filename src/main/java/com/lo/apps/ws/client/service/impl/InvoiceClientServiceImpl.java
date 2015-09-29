@@ -5,53 +5,45 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.lo.apps.ws.client.entity.invoice.*;
+import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
-import com.lo.apps.ws.client.entity.invoice.Account;
-import com.lo.apps.ws.client.entity.invoice.Buyer;
-import com.lo.apps.ws.client.entity.invoice.Invoice;
-import com.lo.apps.ws.client.entity.invoice.InvoiceHeader;
-import com.lo.apps.ws.client.entity.invoice.InvoiceRecord;
-import com.lo.apps.ws.client.entity.invoice.SendInvoiceRequest;
-import com.lo.apps.ws.client.entity.invoice.SendInvoiceResponse;
-import com.lo.apps.ws.client.entity.invoice.Sums;
-import com.lo.apps.ws.client.entity.invoice.Supplier;
-import com.lo.apps.ws.client.entity.invoice.Transaction;
 import com.lo.apps.ws.client.entity.invoice.dto.InvoiceDTO;
 import com.lo.apps.ws.client.entity.invoice.dto.InvoiceRecordDTO;
 import com.lo.apps.ws.client.service.InvoiceClientService;
+import org.springframework.ws.soap.client.core.SoapActionCallback;
 
 public class InvoiceClientServiceImpl extends WebServiceGatewaySupport implements InvoiceClientService {
 
+    private static final ObjectFactory WS_CLIENT_OBJECT_FACTORY = new ObjectFactory();
+
 	@Override
 	public SendInvoiceResponse sendInvoice(InvoiceDTO invoiceDTO) throws Exception {
-		SendInvoiceRequest request = new SendInvoiceRequest();
+		SendInvoiceRequest request = WS_CLIENT_OBJECT_FACTORY.createSendInvoiceRequest();
 		SendInvoiceResponse response = null;
+		Invoice invoice = buildInvoiceFromDto(invoiceDTO);
 
-		Invoice invoice = new Invoice();
-		invoice = buildInvoiceFromDto(invoiceDTO);
-
-		if (invoice != null) {
-			request.setInvoice(invoice);
-			response = (SendInvoiceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
-			// response = (SendInvoiceResponse)
-			// getWebServiceTemplate().marshalSendAndReceive(request, new
-			// SoapActionCallback("http://localhost:8080/invoice/schema/SendInvoiceRequest"));
-		}
+		if(invoice != null){
+            request.setInvoice(invoice);
+            response = (SendInvoiceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+//            response = (SendInvoiceResponse)getWebServiceTemplate().marshalSendAndReceive(request, new SoapActionCallback("http://localhost:8080/invoice/schema/SendInvoiceRequest"));
+        }
 
 		return response;
 	}
 
 	private Invoice buildInvoiceFromDto(InvoiceDTO invoiceDTO) throws Exception {
-		Invoice invoice = new Invoice();
-		InvoiceHeader invoiceHeader = new InvoiceHeader();
-		List<InvoiceRecordDTO> invoiceRecordDTO = new ArrayList<InvoiceRecordDTO>();
-		Buyer buyer = new Buyer();
-		Supplier supplier = new Supplier();
-		Transaction transaction = new Transaction();
-		Account account = new Account();
-		Sums sums = new Sums();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Invoice invoice = WS_CLIENT_OBJECT_FACTORY.createInvoice();
+		InvoiceHeader invoiceHeader = WS_CLIENT_OBJECT_FACTORY.createInvoiceHeader();
+		Buyer buyer = WS_CLIENT_OBJECT_FACTORY.createBuyer();
+		Supplier supplier = WS_CLIENT_OBJECT_FACTORY.createSupplier();
+		Transaction transaction = WS_CLIENT_OBJECT_FACTORY.createTransaction();
+		Account account = WS_CLIENT_OBJECT_FACTORY.createAccount();
+		Sums sums = WS_CLIENT_OBJECT_FACTORY.createSums();
+
+        List<InvoiceRecordDTO> invoiceRecordDTO;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		account.setAccountDate(invoiceDTO.getAccountDate());
 		account.setAccountNumber(invoiceDTO.getAccountNumber());

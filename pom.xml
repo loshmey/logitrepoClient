@@ -13,9 +13,9 @@
 		<!-- use UTF-8 for everything -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring.version>4.1.2.RELEASE</spring.version>
-		<spring.ws.version>2.2.0.RELEASE</spring.ws.version>
-		<spring.boot.version>1.1.9.RELEASE</spring.boot.version>
+		<spring.version>4.2.1.RELEASE</spring.version>
+		<spring.ws.version>2.2.2.RELEASE</spring.ws.version>
+		<spring.boot.version>1.2.6.RELEASE</spring.boot.version>
 	</properties>
 
 	<dependencyManagement>
@@ -40,11 +40,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>${spring.boot.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-			<version>${spring.boot.version}</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-security</artifactId>-->
+			<!--<version>${spring.boot.version}</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -163,7 +163,15 @@
 			<artifactId>wss4j</artifactId>
 			<version>1.6.17</version>
 		</dependency>
-	</dependencies>
+
+		<!-- HTTP CLIENT -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5</version>
+        </dependency>
+
+    </dependencies>
 
 	<build>
 		<finalName>xwsClient</finalName>
@@ -180,6 +188,13 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
