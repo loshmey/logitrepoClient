@@ -160,7 +160,7 @@ public class ClientWSConfiguration extends WsConfigurerAdapter {
             securityInterceptor.setSecureResponse(true);
 			securityInterceptor.setSecurementActions("Timestamp Signature Encrypt");
 
-			securityInterceptor.setSecurementEncryptionKeyIdentifier("DirectReference");
+			securityInterceptor.setSecurementEncryptionKeyIdentifier("IssuerSerial");
 			securityInterceptor.setSecurementEncryptionKeyTransportAlgorithm("http://www.w3.org/2001/04/xmlenc#rsa-1_5");
 			securityInterceptor.setSecurementEncryptionSymAlgorithm("http://www.w3.org/2001/04/xmlenc#aes128-cbc");
 
@@ -173,7 +173,7 @@ public class ClientWSConfiguration extends WsConfigurerAdapter {
 			securityInterceptor.setSecurementSignatureCrypto(keyStore().getObject());
             securityInterceptor.setSecurementSignatureParts("{Content}{http://localhost:8080/invoice/schema}SendInvoiceRequest");
 
-			securityInterceptor.setSecurementEncryptionUser("banka1");
+			securityInterceptor.setSecurementEncryptionUser("firma1");
 			securityInterceptor.setSecurementEncryptionCrypto(keyStore().getObject());
 			securityInterceptor.setSecurementEncryptionParts("{Content}{http://localhost:8080/invoice/schema}SendInvoiceRequest");
 		} catch (Exception e) {
